@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Charls Pasion, applying for Growth at Underdog.">
+<style>:root{color-scheme:light}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}</style>
+<title>Adopt an Underdog</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;600&display=swap">
+<style>
+/* Layout: one centered column in Underdog's own rhythm: big headline, a three-up "pack" of jobs, then each job with its own numbers, the role's bar answered line by line, and a contact card. */
+:root{
+  --bg:#faf9f7; --panel:#ffffff; --line:#e6e2db; --fg:#1b1b1d; --muted:#6a6761;
+  --accent:#d2466a; --blue:#3f7fd6; --ok:#2f8a4e; --ok-bg:#e3f2e6; --warn:#a2670f; --warn-bg:#f8ecd2;
+  --btn-bg:#1b1b1d; --btn-fg:#ffffff; --shadow:0 18px 40px -24px rgba(40,30,20,.28);
+  --term-bg:#141416; --term-fg:#f3f1ec; --term-dim:#8f8c86; --term-ok:#e6bd45; --term-line:#2a2a2e;
+  --rb:linear-gradient(90deg,#8fbf4d,#e6bd45,#e8843c,#d2466a,#8a5cc9,#4f8fe0);
+  --display:"Geist","Helvetica Neue",Arial,sans-serif; --serif:"Instrument Serif",Georgia,serif;
+  --script:"Caveat","Segoe Script",cursive; --mono:"Geist Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f0f12; --panel:#18181c; --line:#2c2c33; --fg:#f5f3ee; --muted:#a3a09a;
+  --accent:#f0809b; --blue:#7fb0f2; --ok:#7fd09a; --ok-bg:#17301f; --warn:#e9bf6a; --warn-bg:#33270f;
+  --btn-bg:#f5f3ee; --btn-fg:#121214; --shadow:0 18px 40px -24px rgba(0,0,0,.8);
+  --term-bg:#08080a; --term-line:#25252b; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0f0f12; --panel:#18181c; --line:#2c2c33; --fg:#f5f3ee; --muted:#a3a09a;
+  --accent:#f0809b; --blue:#7fb0f2; --ok:#7fd09a; --ok-bg:#17301f; --warn:#e9bf6a; --warn-bg:#33270f;
+  --btn-bg:#f5f3ee; --btn-fg:#121214; --shadow:0 18px 40px -24px rgba(0,0,0,.8);
+  --term-bg:#08080a; --term-line:#25252b; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--display);font-size:17px;line-height:1.55;overflow-x:hidden}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:20px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+h1,h2,h3{font-weight:600;letter-spacing:-.04em;line-height:1;margin:0;text-wrap:balance}
+h1{font-size:clamp(3rem,10vw,6rem)}
+h2{font-size:clamp(2rem,6vw,3.4rem)}
+h3{font-size:1.3rem;letter-spacing:-.02em;line-height:1.2}
+h1 em,h2 em{font-family:var(--serif);font-weight:400;letter-spacing:-.02em}
+.rb{background:var(--rb);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.05em .1em .12em .14em;margin-left:-.14em}
+.seattle{border:1px solid var(--line);background:var(--panel);border-radius:28px;padding:clamp(18px,4vw,36px);box-shadow:var(--shadow)}
+.city{display:block;width:100%;height:clamp(260px,36vw,400px);margin-top:18px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:.84rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.legend i.hit{background:var(--accent)}
+.offer{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.offer div{border-top:2px solid var(--fg);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.offer b{font-weight:600}
+.offer p{font-size:.92rem;color:var(--muted)}
+p{margin:0;max-width:62ch}
+.eyebrow{font-size:.74rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.script{font-family:var(--script);font-size:1.6rem;line-height:1.1}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-block:12px}
+.name{font-weight:600;font-size:1.1rem;letter-spacing:-.02em}
+.bar .right{display:flex;gap:8px;align-items:center}
+.toggle{font:inherit;font-size:.82rem;background:none;color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+
+/* buttons: every clickable thing carries a moving arrow */
+.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:500;font-size:1rem;text-decoration:none;background:var(--btn-bg);color:var(--btn-fg);border:1px solid var(--btn-bg);border-radius:999px;padding:13px 22px;cursor:pointer}
+.btn.sm{padding:9px 16px;font-size:.88rem}
+.btn.ghost{background:var(--panel);color:var(--fg);border-color:var(--line)}
+.arr{display:inline-block;animation:nudge 1.4s ease-in-out infinite}
+.arr.down{animation-name:nudgeDown}
+@keyframes nudge{50%{transform:translateX(5px)}}
+@keyframes nudgeDown{50%{transform:translateY(4px)}}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+.hero{padding-block:52px 40px;display:flex;flex-direction:column;gap:24px;align-items:center;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:.95rem;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:9px 16px}
+.badge i{width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.chips{font-size:clamp(1.15rem,3.4vw,1.6rem);color:var(--muted);line-height:2.1;max-width:26ch}
+.chips span{display:inline-flex;align-items:center;gap:.35em;color:var(--fg);font-weight:400;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:0 .75em 0 .6em;line-height:1.75;vertical-align:middle}
+.chips svg{width:.95em;height:.95em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:var(--muted)}
+.build{display:flex;flex-direction:column;gap:12px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px 20px;align-items:start}
+.step .num{font-family:var(--serif);font-size:2.2rem;line-height:1;color:var(--accent);padding-top:2px}
+.step .body{display:flex;flex-direction:column;gap:6px;min-width:0}
+.step .script{color:var(--accent)}
+.step p{color:var(--muted);max-width:66ch}
+.why{font-size:1.15rem;line-height:1.5;max-width:60ch;margin-bottom:28px}
+.hero strong{font-size:1.2rem;font-weight:600;letter-spacing:-.01em}
+.also{font-size:.95rem;color:var(--muted);max-width:44ch}
+
+.thesis{background:var(--panel);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:clamp(24px,5vw,44px);margin-bottom:56px}
+.thesis div{font-family:var(--serif);font-size:clamp(2rem,6.5vw,3.6rem);line-height:1.15;letter-spacing:-.02em}
+.thesis .script{display:inline-block;font-size:clamp(2rem,6.5vw,3.4rem);margin-left:.3em;background:var(--rb) 0 100%/100% 4px no-repeat;padding-bottom:4px}
+.thesis s{color:var(--muted)}
+.thesis p{margin-top:18px;color:var(--muted)}
+
+section{padding-block:56px;border-top:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+.case-meta{font-size:.9rem;color:var(--muted)}
+
+/* the pack: three jobs, each with its own number */
+.pack{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.pup{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:26px 20px;display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;text-decoration:none}
+.pup b{font-weight:600;font-size:1.05rem}
+.pup .n{font-size:3.4rem;font-weight:600;letter-spacing:-.05em;line-height:1.05;font-variant-numeric:tabular-nums}
+.pup .l{font-size:.95rem;color:var(--muted);max-width:24ch}
+.pup .go{margin-top:10px;font-size:.9rem;font-weight:500;text-decoration:underline;text-underline-offset:4px;display:inline-flex;gap:8px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-block:26px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px 18px;display:flex;flex-direction:column;gap:8px}
+.stat .n{font-size:2.5rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.045em}
+.stat .l{font-size:.92rem;color:var(--muted)}
+.stat .src{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+ul.plain{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;max-width:62ch}
+
+/* system map (same visual as my other pages) */
+.terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-block:28px}
+.term{background:var(--term-bg);color:var(--term-fg);border:1px solid var(--term-line);border-radius:14px;text-align:left;font-family:var(--mono);font-size:12px;line-height:1.65;padding:0;cursor:pointer;overflow:hidden;min-width:0}
+.term.on{border-color:var(--accent)}
+.term-bar{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--term-line);color:var(--term-dim)}
+.term-bar i{width:8px;height:8px;border-radius:50%;background:var(--term-dim);opacity:.55}
+.term-bar span{margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.term-body{padding:10px 12px 12px;height:140px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.term-body div{white-space:pre;overflow:hidden;text-overflow:ellipsis;flex:none}
+.term-body .ok{color:var(--term-ok)}.term-body .dim{color:var(--term-dim)}
+.term-cursor{display:inline-block;width:7px;height:13px;background:var(--term-fg);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.tap-hint{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:7px 14px;border:1px solid var(--accent);border-radius:999px;font-size:.84rem;color:var(--accent)}
+.sys-heads,.sys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,8vw,96px)}
+.sys-heads{margin-bottom:14px;font-size:.8rem;color:var(--muted)}
+.sys-heads span{display:flex;gap:8px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:8px;min-width:0}
+.sys-heads b{font-family:var(--mono);font-weight:400;color:var(--fg)}
+.sys{position:relative;align-items:center}
+.sys-col{display:grid;gap:clamp(20px,4vw,44px);position:relative;z-index:1;min-width:0}
+.sys-svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+.edge{fill:none;stroke:var(--muted);stroke-width:1.2;opacity:.45}
+.edge.back{stroke-dasharray:3 5}
+.pk{fill:var(--accent)}.pk.st{fill:var(--blue)}.pk.b{fill:var(--muted)}
+.node{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 28px 14px 14px;text-align:left;font:inherit;color:inherit;cursor:pointer;display:grid;gap:4px;min-width:0;transition:border-color .3s,transform .2s}
+.node::after{content:"\203A";position:absolute;right:10px;top:8px;font-size:20px;line-height:1;color:var(--accent);animation:nudge 1.4s ease-in-out infinite}
+.node small{font-size:.66rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.node b{font-weight:600;font-size:clamp(.9rem,2vw,1.15rem);line-height:1.15;letter-spacing:-.02em;overflow-wrap:anywhere}
+.node span{font-size:.75rem;color:var(--muted)}
+.node:hover{transform:translateY(-2px)}
+.node.hub{border-color:var(--fg)}
+.node[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.node.hit{border-color:var(--accent)}
+.guards{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;align-items:center}
+.guards .lab{font-size:.8rem;color:var(--muted);margin-right:4px}
+.guard{font:inherit;font-size:.82rem;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--fg);padding:7px 14px 7px 12px;cursor:pointer;display:inline-flex;gap:8px;align-items:center;transition:background .25s,color .25s}
+.guard i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.guard[aria-pressed="true"]{border-color:var(--accent)}
+.guard.flash{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.guard.flash i{background:var(--accent)}
+.detail{margin-top:30px;border-top:1px solid var(--fg);padding-top:22px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,4vw,44px)}
+.detail>div{min-width:0}
+.detail .k{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.detail h3{font-size:1.5rem}
+.detail p{color:var(--muted);font-size:.95rem}
+.detail .aq p{color:var(--fg)}
+.note{font-size:.78rem;color:var(--muted);margin-top:12px}
+
+/* the bar, answered line by line */
+.barlist{display:flex;flex-direction:column;gap:12px}
+.ask{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) auto;gap:18px;align-items:start}
+.ask q{font-family:var(--serif);font-size:1.35rem;line-height:1.2;quotes:none}
+.ask p{font-size:.95rem;color:var(--muted)}
+.chip{font-size:.78rem;font-weight:600;border-radius:999px;padding:5px 12px;white-space:nowrap;background:var(--ok-bg);color:var(--ok);justify-self:start}
+.chip.part{background:var(--warn-bg);color:var(--warn)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{border:1px solid var(--line);background:var(--panel);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.card .script{color:var(--accent)}
+
+.close{text-align:center}
+.adopt{background:var(--panel);border:1px solid var(--line);border-radius:32px;box-shadow:var(--shadow);padding:clamp(28px,6vw,56px) 20px;display:flex;flex-direction:column;gap:20px;align-items:center}
+.adopt h2{font-size:clamp(2.6rem,10vw,5.4rem)}
+.adopt .row{justify-content:center}
+.email{font-family:var(--mono);font-size:1rem;user-select:all;overflow-wrap:anywhere}
+footer{padding-block:28px;font-size:.78rem;color:var(--muted);text-align:center}
+
+@media (max-width:720px){
+  .terms,.detail,.ask{grid-template-columns:1fr}
+  .term-body{height:96px}
+  .sys-heads,.sys{gap:10px}
+  .node{padding:8px 14px 8px 8px;border-radius:12px}
+  .node::after{right:4px;top:4px;font-size:16px}
+  .node b{font-size:.8rem;overflow-wrap:normal}
+  .node span{display:none}
+  .bar .btn{display:none}
+}
+@media (prefers-reduced-motion:reduce){ .arr,.node::after,.term-cursor{animation:none} }
+</style>
+
+</head>
+<body>
+<div class="bar"><div class="wrap">
+  <span class="name">Charls Pasion</span>
+  <div class="right">
+    <button class="toggle" id="themeToggle" type="button">Light / Dark</button>
+    <a class="btn sm" href="#contact" data-jump>Get in touch <span class="arr down">↓</span></a>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <a class="badge" href="https://underdog.ai/team#growth" target="_blank" rel="noopener"><i></i>Applying for Growth, Member of Technical Staff <span class="arr">→</span></a>
+    <h1>An underdog for <em class="rb">growth.</em></h1>
+    <p class="chips">Your own hire for <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12l3 3 5-6"/><circle cx="12" cy="12" r="9"/></svg>partnerships</span>, <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></svg>enterprise</span>, <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-7-7 18-2-8z"/></svg>outbound</span> and <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18l5-6 4 3 7-8"/><path d="M16 7h4v4"/></svg>account growth</span>.</p>
+    <div class="row" style="justify-content:center">
+      <a class="btn" href="#contact" data-jump>Get in touch <span class="arr down">↓</span></a>
+      <a class="btn ghost" href="#garmentory" data-jump>See what I built <span class="arr down">↓</span></a>
+    </div>
+    <p class="also">Not the right seat? I'm also open to any GTM, sales or partnerships role at Underdog.</p>
+  </header>
+
+  <div class="thesis">
+    <div>I do my best work <span class="script">without a playbook.</span><br><s>with a playbook.</s></div>
+    <p>I'm Charls. I've closed enterprise deals as a founder, built an outbound system with AI and ran it myself, and finished last quarter at 104% of quota at Uber. Each number below sits under the job it came from.</p>
+  </div>
+
+  <section id="pack">
+    <div class="head">
+      <span class="eyebrow">The short version</span>
+      <h2>Three jobs. <em>Pick one.</em></h2>
+    </div>
+    <div class="pack">
+      <a class="pup" href="#uber" data-jump><b>Uber</b><span class="script">The current one.</span><span class="n">104%</span><span class="l">of quota in Q3 2026</span><span class="go">See Uber <span class="arr down">↓</span></span></a>
+      <a class="pup" href="#garmentory" data-jump><b>Garmentory</b><span class="script">The one I built.</span><span class="n">67.5%</span><span class="l">of GMV from net-new partners came from my boutiques</span><span class="go">See Garmentory <span class="arr down">↓</span></span></a>
+      <a class="pup" href="#talkcarpet" data-jump><b>Talk Carpet</b><span class="script">The one I founded.</span><span class="n">$7M</span><span class="l">annual revenue at its peak</span><span class="go">See Talk Carpet <span class="arr down">↓</span></span></a>
+    </div>
+  </section>
+
+  <section id="seattle">
+    <div class="head">
+      <span class="eyebrow">Day one · Seattle</span>
+      <h2>Seattle, <em>from day one.</em></h2>
+      <p class="muted">Underdog's enterprise case is private AI for companies that can't send client files to the cloud. Seattle is full of them: law firms, health systems, and some of the largest Mac and Windows fleets in the country, an hour from Microsoft and Amazon alumni who already understand on-device.</p>
+    </div>
+    <div class="seattle">
+      <p><b>My first 30 days:</b> point the Garmentory machine at companies like the ones below, book the meetings, and bring Underdog into the first ones myself. Seattle is where I'd start, not where I'd stop.</p>
+      <canvas class="city" id="city" role="img" aria-label="Animation of outreach leaving a laptop running Underdog and landing on Seattle companies, which light up as meetings are booked"></canvas>
+      <div class="legend"><span><i></i>Outreach sent</span><span><i class="hit"></i>Meeting booked</span><span>Example targets, not current conversations.</span></div>
+      <div class="offer">
+        <div><b>Week 1</b><p>Build the list: firms with client files and no cloud policy. Sit in on your calls to learn the pitch.</p></div>
+        <div><b>Weeks 2 to 3</b><p>Run outreach with the same guardrails as Garmentory. Take every meeting myself, in person where I can.</p></div>
+        <div><b>Week 4</b><p>Report what booked, what closed, and what each company said. Then take the same playbook to the next city.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="uber">
+    <div class="head">
+      <span class="eyebrow">Job 1 · Uber</span>
+      <h2>Hit the number. <em>Got a bigger book.</em></h2>
+      <span class="case-meta">Account Manager, SMB · Seattle · May 2026 to now</span>
+    </div>
+    <p>I manage restaurant brands on Uber and grow them through ads, promotions and order volume. Part of that growth is net-new revenue I go and find through cold calls and field visits.</p>
+    <div class="stats">
+      <div class="stat"><span class="n">104%</span><span class="l">of quota in Q3 2026, against a 37% blended growth target</span><span class="src">Uber</span></div>
+      <div class="stat"><span class="n">101%</span><span class="l">of quota in my first six weeks, during the Q2 ramp</span><span class="src">Uber</span></div>
+      <div class="stat"><span class="n">$8M → $40M</span><span class="l">Awarded a much bigger book for Q4 because of a strong Q3 finish</span><span class="src">Uber</span></div>
+    </div>
+    <ul class="plain">
+      <li>I work with the ads specialist and operations to turn partner feedback into better process.</li>
+      <li>I work in Salesforce every day and run business reviews with my restaurant partners.</li>
+    </ul>
+  </section>
+
+  <section id="garmentory">
+    <div class="head">
+      <span class="eyebrow">Job 2 · Garmentory · Something I built</span>
+      <h2>No playbook. <em>So I built the system.</em></h2>
+      <span class="case-meta">Senior Account Manager, Brand Partnerships · full time 2023 to 2025, contract in 2026</span>
+    </div>
+    <p>Garmentory is a curated fashion marketplace where independent boutiques sell online. My job was to find the right boutiques and sign them. In 2026 I did it part time, about ten hours a week, so I built a system to do the searching for me.</p>
+
+    <div id="hood">
+      <div class="terms" id="terms">
+        <button class="term" type="button" data-n="orch" aria-label="Agent orchestration: discovery terminal"><div class="term-bar"><i></i><i></i><i></i><span>agent 1 · discovery</span></div><div class="term-body"></div></button>
+        <button class="term" type="button" data-n="orch" aria-label="Agent orchestration: scraper terminal"><div class="term-bar"><i></i><i></i><i></i><span>agent 2 · stockist scraper</span></div><div class="term-body"></div></button>
+        <button class="term" type="button" data-n="orch" aria-label="Agent orchestration: audit terminal"><div class="term-bar"><i></i><i></i><i></i><span>agent 3 · audits</span></div><div class="term-body"></div></button>
+      </div>
+      <p class="tap-hint">Tap any box or guardrail to see what it did <span class="arr down">↓</span></p>
+      <div class="sys-heads" aria-hidden="true"><span><b>01</b>Source</span><span><b>02</b>Enrich &amp; store</span><span><b>03</b>Reach &amp; track</span></div>
+      <div class="sys" id="sys">
+        <svg class="sys-svg" id="sysSvg" aria-hidden="true"></svg>
+        <div class="sys-col">
+          <button class="node" type="button" data-n="disc" aria-pressed="false"><small>Scraper</small><b>Discovery scraper</b><span>SerpAPI, capped runs</span></button>
+          <button class="node" type="button" data-n="stock" aria-pressed="true"><small>Scraper</small><b>Stockist scraper</b><span>47 brand pages</span></button>
+        </div>
+        <div class="sys-col">
+          <button class="node hub" type="button" data-n="air" aria-pressed="false"><small>Hub</small><b>Airtable base</b><span>Every record, every stage</span></button>
+          <button class="node" type="button" data-n="hunt" aria-pressed="false"><small>Script</small><b>Contact enrichment</b><span>Hunter.io</span></button>
+        </div>
+        <div class="sys-col">
+          <button class="node" type="button" data-n="draft" aria-pressed="false"><small>Script</small><b>Outreach drafter</b><span>Claude + Gmail API</span></button>
+          <button class="node" type="button" data-n="det" aria-pressed="false"><small>Script</small><b>Send &amp; reply tracking</b><span>Back into Airtable</span></button>
+        </div>
+      </div>
+      <div class="guards" id="guards">
+        <span class="lab">Guardrails</span>
+        <button class="guard" type="button" data-n="guard" data-g="cap" aria-pressed="false"><i></i>Credit caps</button>
+        <button class="guard" type="button" data-n="guard" data-g="dry" aria-pressed="false"><i></i>Dry run first</button>
+        <button class="guard" type="button" data-n="guard" data-g="dnc" aria-pressed="false"><i></i>Do-not-contact list</button>
+        <button class="guard" type="button" data-n="guard" data-g="live" aria-pressed="false"><i></i>Live partner sync</button>
+      </div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+      <p class="note">The whole stack cost about $217 a month. Terminal output is illustrative of the runs, not a recording.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="n">67.5%</span><span class="l">of all GMV from net-new partners came from the boutiques I signed, April to August 2026</span><span class="src">Garmentory, 2026</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">of the boutiques I signed went on to make sales</span><span class="src">Garmentory, 2026</span></div>
+      <div class="stat"><span class="n">70%</span><span class="l">of them ranked in the top 30 of all partners on the marketplace</span><span class="src">Garmentory, 2026</span></div>
+      <div class="stat"><span class="n">50%+</span><span class="l">of all net-new partners company-wide were sourced by me</span><span class="src">Garmentory, 2023 to 2025</span></div>
+    </div>
+    <p class="muted">I'm not an engineer. I built this with AI tools and I can explain every step of it.</p>
+  </section>
+
+  <section id="talkcarpet">
+    <div class="head">
+      <span class="eyebrow">Job 3 · Talk Carpet</span>
+      <h2>Seven years closing <em>enterprise deals.</em></h2>
+      <span class="case-meta">Co-Founder &amp; GTM Sales Lead · New York · 2016 to 2023</span>
+    </div>
+    <p>I co-founded a commercial carpet business and built its pipeline through cold calls and LinkedIn. Clients included Google, Netflix, Dropbox, Amgen and Marriott, with projects worth $75K to $1 million each.</p>
+    <div class="stats">
+      <div class="stat"><span class="n">35%</span><span class="l">of client presentations converted to a sale</span><span class="src">Talk Carpet</span></div>
+      <div class="stat"><span class="n">70%</span><span class="l">customer retention</span><span class="src">Talk Carpet</span></div>
+      <div class="stat"><span class="n">$7M</span><span class="l">annual revenue at its peak</span><span class="src">Talk Carpet</span></div>
+    </div>
+    <p>Long sales cycles, procurement teams and several decision makers in every deal. The same work as bringing Underdog into a company.</p>
+  </section>
+
+  <section id="bar">
+    <div class="head">
+      <span class="eyebrow">The bar</span>
+      <h2>Your five lines. <em>My answers.</em></h2>
+      <p class="muted">Taken from the Growth posting. I've marked where I'm strong and where I'm not there yet.</p>
+    </div>
+    <div class="barlist">
+      <div class="ask"><q>You have closed partnerships or enterprise deals that mattered.</q><p>Google, Netflix, Dropbox and Marriott at Talk Carpet, on projects worth up to $1 million. At Garmentory I sourced more than half of all net-new partners from 2023 to 2025.</p><span class="chip">Yes</span></div>
+      <div class="ask"><q>You can build. You ship the tools growth needs yourself.</q><p>The Garmentory system above. I built it with AI tools, ran it on about $217 a month, and fixed it myself when it broke.</p><span class="chip">Yes</span></div>
+      <div class="ask"><q>You would never trade members' trust for growth.</q><p>My system had a do-not-contact list it could not edit, and it checked live partner data so active partners never got cold outreach.</p><span class="chip">Yes</span></div>
+      <div class="ask"><q>You have grown a product people love, and you can show the curve.</q><p>My curves are revenue, not users. 104% of quota at Uber, and 67.5% of net-new GMV at Garmentory. I haven't grown a consumer product's user base.</p><span class="chip part">Partly</span></div>
+      <div class="ask"><q>Marketing sense and viral sense.</q><p>I led Garmentory's first sponsored listings pilot: a free four-week test, then case studies of the results, and roughly a third of the partners kept paying. I haven't made a consumer product spread. That part I'd learn next to Sigil.</p><span class="chip part">Partly</span></div>
+    </div>
+  </section>
+
+  <section id="build">
+    <div class="head">
+      <span class="eyebrow">Why Underdog, and what I would build</span>
+      <h2>Then, the next <em>two things I'd ship.</em></h2>
+    </div>
+    <p class="why">My own outreach system had to send my inbox to a cloud model, and that model was about half the monthly bill. Underdog does that work on the laptop, for free, and I know exactly who needs it. At Uber I run a playbook that works, but I didn't write it. I want to be somewhere early enough to help write one, where no task is too small and I build my own tools.</p>
+    <div class="build">
+      <div class="step"><span class="num">1</span><div class="body">
+        <span class="script">Proof partners ask for first.</span>
+        <h3>A written case study for every company that adopts.</h3>
+        <p>What they couldn't do before, what they do now. That's how I got Garmentory's first sponsored listings adopted, and it's what chip makers, device makers and enterprise buyers will ask to see.</p>
+      </div></div>
+      <div class="step"><span class="num">2</span><div class="body">
+        <span class="script">Find what makes people share.</span>
+        <h3>Invites you can measure.</h3>
+        <p>Underdog is invite-only, and one invite from a happy user is worth more than any ad. I'd build the referral loop with a tracked source on every invite, so we know which launches, partners and people actually spread it.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="contact" class="close">
+    <div class="adopt">
+      <span class="eyebrow">Seattle · Open to Growth, GTM and Partnerships</span>
+      <h2>Adopt an <em class="rb">underdog.</em></h2>
+      <p>I'm applying for Growth, full time. I'm also open to any GTM, sales or partnerships role at Underdog.</p>
+      <div class="row">
+        <span class="email" id="email">cdp.gervacio@gmail.com</span>
+        <button class="btn ghost sm" id="copy" type="button">Copy email <span class="arr">→</span></button>
+      </div>
+      <div class="row">
+        <a class="btn" id="resume" href="https://drive.google.com/file/d/1IW-o7nFI-EMSgSZKPYAgWVgz0P_3tT27/view?usp=sharing" target="_blank" rel="noopener">Resume <span class="arr">→</span></a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/charls-daren-pasion-97a16420a" target="_blank" rel="noopener">LinkedIn <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>A personal application page by Charls Pasion. Not affiliated with or endorsed by Underdog or Conway Research.</footer>
+</div>
+
+<script>
+document.getElementById('themeToggle').addEventListener('click',function(){
+  var r=document.documentElement,cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  r.setAttribute('data-theme',cur==='dark'?'light':'dark');
+});
+document.querySelectorAll('[data-jump]').forEach(function(a){a.addEventListener('click',function(e){
+  var t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();
+  var sc=document.scrollingElement||document.documentElement,from=sc.scrollTop;
+  var to=Math.max(0,from+t.getBoundingClientRect().top-64),t0=null;
+  function step(now){if(t0===null)t0=now;var k=Math.min(1,(now-t0)/450);k=1-Math.pow(1-k,3);
+    sc.scrollTop=from+(to-from)*k;
+    if(k<1)requestAnimationFrame(step);
+    else if(Math.abs(to-from)>4&&Math.abs(sc.scrollTop-from)<2)t.scrollIntoView();}
+  requestAnimationFrame(step);
+});});
+(() => {
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const vis = new Map();
+const visIO = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => vis.set(e.target, e.isIntersecting))) : null;
+const isVis = el => visIO ? vis.get(el) !== false : true;
+
+const NODES = {
+  disc:{t:'Discovery scraper', tag:'Scraper · SerpAPI', did:'Searched Google through SerpAPI for independent boutiques. It checked my remaining credits before every run, capped queries per run, and sent new finds to Airtable for review instead of straight into outreach.', aq:'The same approach finds companies that need private AI: search, cap the spend, and review before anyone gets an email.'},
+  stock:{t:'Stockist scraper', tag:'Scraper · 47 brands', did:'Crawled the stockist pages of 47 brands to find boutiques already carrying labels that sold well on Garmentory. Our best sellers became a map of where to find more partners like them.', aq:'Your best customers tell you where the next ones are. The first companies that adopt Underdog point to the next hundred.'},
+  air:{t:'Airtable base', tag:'Hub · source of truth', did:'One base for boutiques, contacts, activities and partners, with every record moving through stages from New Prospect to Live.', aq:'One record of every partner and company at every stage, so growth is measured and not guessed.'},
+  hunt:{t:'Contact enrichment', tag:'Script · Hunter.io', did:'Found decision-maker emails, firing only at the New Prospect stage so credits went to qualified stores. When it corrupted contact data on some records, I traced the cause, repaired them and added pre-send checks.', aq:'It broke and I fixed it myself. On a team this small, that saves an engineer an afternoon.'},
+  draft:{t:'Outreach drafter', tag:'Script · Claude + Gmail API', did:'Drafted personalized touches straight into Gmail drafts, written to my rules on tone and format. I reviewed the first touches before anything went out.', aq:'This is the email work Underdog does on the device. I had to send mine to a cloud model to get it.'},
+  det:{t:'Send and reply tracking', tag:'Script · Gmail API', did:'Logged sends and replies back to Airtable, filtered auto-responses and flagged bounces, so follow-ups fired on time without manual logging.', aq:'I knew which message got a reply. The posting says measure what works, and this is how I did it.'},
+  orch:{t:'Agent orchestration', tag:'AI coding agents', did:'I built and ran the system with AI coding agents, often three at once in parallel terminals: one discovering, one scraping, one auditing. Each worked under written rules, like a dry run before any live write.', aq:'Three agents in parallel is how one person covers the work of a small team. That is the leverage your team page describes.'},
+  guard:{t:'Guardrails', tag:'Rules the system follows', did:'Credit checks and query caps on every run. Dry runs before any live write. A read-only do-not-contact list. A sync with live partner data, so active partners never got cold outreach.', aq:'Growth with rules that protect the people on the other end. I would not trade trust for a bigger number.'}
+};
+const detailEl = document.getElementById('detail'), hood = document.getElementById('hood');
+const nEls = [...hood.querySelectorAll('[data-n]')];
+function setNode(id){
+  nEls.forEach(b => { const on = b.dataset.n === id; if (b.classList.contains('term')) b.classList.toggle('on', on); else b.setAttribute('aria-pressed', on); });
+  const d = NODES[id];
+  detailEl.innerHTML = `<div><div class="k">Showing · ${esc(d.tag)}</div><h3>${esc(d.t)}</h3></div><div><div class="k">What it did</div><p>${esc(d.did)}</p></div><div class="aq"><div class="k">Why it matters to Underdog</div><p>${esc(d.aq)}</p></div>`;
+}
+nEls.forEach(b => b.addEventListener('click', () => { setNode(b.dataset.n); if (innerWidth < 760) detailEl.scrollIntoView({behavior: RM ? 'auto' : 'smooth', block: 'nearest'}); }));
+setNode('stock');
+
+const sysEl = document.getElementById('sys'), svgEl = document.getElementById('sysSvg'), NS = 'http://www.w3.org/2000/svg';
+const EDGES = [['disc','air'],['stock','air'],['air','hunt'],['hunt','draft'],['draft','det'],['det','air',1]];
+let edgeEls = [], packets = [], spawnAcc = 0, discCount = 0, airCount = 0;
+const nodeEl = id => sysEl.querySelector(`.node[data-n="${id}"]`);
+const guardEl = g => document.querySelector(`.guard[data-g="${g}"]`);
+function relRect(el, cr){ const r = el.getBoundingClientRect(); return {l:r.left - cr.left, r:r.right - cr.left, t:r.top - cr.top, b:r.bottom - cr.top, cx:(r.left + r.right)/2 - cr.left, cy:(r.top + r.bottom)/2 - cr.top}; }
+function hoodLayout(){
+  const cr = sysEl.getBoundingClientRect();
+  svgEl.setAttribute('viewBox', `0 0 ${cr.width} ${cr.height}`);
+  svgEl.querySelectorAll('path').forEach(p => p.remove());
+  edgeEls = EDGES.map(([a, b, back]) => {
+    const A = relRect(nodeEl(a), cr), B = relRect(nodeEl(b), cr);
+    const dx = B.cx - A.cx, dy = B.cy - A.cy; let d;
+    if (Math.abs(dx) > Math.abs(dy)*.6){
+      const s = Math.sign(dx), x1 = s > 0 ? A.r : A.l, x2 = s > 0 ? B.l : B.r, y1 = A.cy + (back ? 10 : 0), y2 = B.cy + (back ? 10 : 0), mx = (x1 + x2)/2;
+      d = `M${x1} ${y1} C${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+    } else {
+      const y1 = A.b, y2 = B.t, my = (y1 + y2)/2;
+      d = `M${A.cx} ${y1} C${A.cx} ${my}, ${B.cx} ${my}, ${B.cx} ${y2}`;
+    }
+    const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); p.setAttribute('class', 'edge' + (back ? ' back' : ''));
+    svgEl.insertBefore(p, svgEl.firstChild);
+    return {p, len:p.getTotalLength()};
+  });
+}
+function flash(el, cls, ms){ if (!el) return; el.classList.add(cls); clearTimeout(el._ft); el._ft = setTimeout(() => el.classList.remove(cls), ms); }
+function addPacket(ei, opts = {}){
+  if (packets.length > 48) return;
+  const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', opts.r || 3.4);
+  c.setAttribute('class', 'pk' + (EDGES[ei][2] ? ' st' : ''));
+  svgEl.appendChild(c);
+  packets.push({ei, t:0, c, block: !!opts.block, g: opts.g, sp: .42 + Math.random()*.12});
+}
+function arrive(pk){
+  const [, to, back] = EDGES[pk.ei];
+  flash(nodeEl(to), 'hit', 380);
+  if (to === 'air' && !back){ airCount++; if (airCount % 6 === 0) flash(guardEl('dry'), 'flash', 900); if (Math.random() < .72) addPacket(2); }
+  else if (to === 'hunt'){ const bl = Math.random() < .18; addPacket(3, bl ? {block:true, g: Math.random() < .5 ? 'dnc' : 'live'} : {}); }
+  else if (to === 'draft') addPacket(4);
+  else if (to === 'det') addPacket(5, {r:2.6});
+}
+function hoodStep(dt){
+  spawnAcc += dt*1.5;
+  while (spawnAcc > 1){ spawnAcc--; const ei = Math.random() < .45 ? 0 : 1; if (ei === 0){ discCount++; if (discCount % 14 === 0) flash(guardEl('cap'), 'flash', 900); } addPacket(ei); }
+  packets.forEach(pk => {
+    pk.t += dt*pk.sp;
+    const E = edgeEls[pk.ei];
+    if (pk.block && pk.t > .5 && !pk.dead){ pk.dead = true; pk.c.setAttribute('class', 'pk b'); flash(guardEl(pk.g), 'flash', 900); }
+    if (pk.dead){ pk.fade = (pk.fade || 1) - dt*2.2; pk.c.style.opacity = Math.max(0, pk.fade); }
+    if (E){ const pt = E.p.getPointAtLength(Math.min(1, pk.t)*E.len); pk.c.setAttribute('cx', pt.x); pk.c.setAttribute('cy', pt.y); }
+    if (pk.t >= 1 && !pk.dead){ pk.done = true; arrive(pk); }
+  });
+  packets = packets.filter(pk => { const gone = pk.done || (pk.dead && pk.fade <= 0); if (gone) pk.c.remove(); return !gone; });
+}
+
+const TERM_LINES = [
+  ['$ node discovery.js --max-credits 40','✓ pre-flight: credits above floor','query 07/40  independent womenswear boutique','+ 2 new → Airtable (Needs Review)','query 08/40  curated menswear shop','· 0 new, already in base','query 09/40  concept store home goods','+ 1 new → Airtable (Needs Review)','✓ run capped at 40 queries. done'],
+  ['$ node stockist-scraper.js','brand 12/47  fetching stockist page','found 31 stockists','· skip 4: live partner domains','+ 6 candidates → Airtable','brand 13/47  fetching stockist page','found 18 stockists','· skip 2: do-not-contact list','+ 3 candidates → Airtable'],
+  ['> audit drafts against Airtable','dry run: 0 live writes','· flag: recipient changed on 1 draft','> check bounces since last run','✓ 3 bounces flagged','> filter auto-replies','✓ 5 out-of-office replies ignored','> follow-ups due today','✓ 4 drafts queued for review']
+];
+const termsEl = document.getElementById('terms');
+const terms = [...termsEl.querySelectorAll('.term-body')].map((el, i) => ({el, lines:TERM_LINES[i], li:0, ci:0, wait:i*.6, shown:[], last:''}));
+const lineCls = l => l[0] === '✓' || l[0] === '+' ? 'ok' : (l[0] === '·' || l.startsWith('dry') ? 'dim' : '');
+function renderTerm(T){
+  const cur = T.lines[T.li].slice(0, Math.floor(T.ci));
+  const html = T.shown.map(l => `<div class="${lineCls(l)}">${esc(l)}</div>`).join('') + `<div class="${lineCls(T.lines[T.li])}">${esc(cur)}<span class="term-cursor"></span></div>`;
+  if (html !== T.last){ T.el.innerHTML = html; T.last = html; }
+}
+function tickTerm(T, dt){
+  if (T.wait > 0){ T.wait -= dt; return; }
+  const line = T.lines[T.li];
+  T.ci += dt*(line[0] === '$' || line[0] === '>' ? 26 : 70);
+  if (T.ci >= line.length){ T.shown.push(line); if (T.shown.length > 5) T.shown.shift(); T.li = (T.li + 1) % T.lines.length; T.ci = 0; T.wait = .3 + Math.random()*.6; }
+  renderTerm(T);
+}
+terms.forEach(T => { for (let k = 0; k < 4; k++) T.shown.push(T.lines[k]); T.li = 4; renderTerm(T); });
+if (visIO) [sysEl, termsEl].forEach(el => visIO.observe(el));
+
+addEventListener('resize', hoodLayout); hoodLayout();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(hoodLayout);
+let last = performance.now();
+function loop(now){
+  const dt = Math.min(.05, (now - last)/1000); last = now;
+  if (isVis(sysEl)) hoodStep(dt);
+  if (isVis(termsEl)) terms.forEach(T => tickTerm(T, dt));
+  requestAnimationFrame(loop);
+}
+if (!RM) requestAnimationFrame(loop);
+})();
+// Seattle target map
+(() => {
+const cv = document.getElementById('city'), cx = cv.getContext('2d');
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W = 0, H = 0, C = {};
+function colors(){ const cs = getComputedStyle(document.documentElement); ['fg','muted','line','accent','panel','blue'].forEach(k => C[k] = cs.getPropertyValue('--'+k).trim()); }
+const T = [
+  {n:'Perkins Coie', x:.27, h:.62},{n:'DWT', x:.36, h:.50},
+  {n:'UW Medicine', x:.45, h:.42},{n:'Swedish', x:.54, h:.56},
+  {n:'Starbucks', x:.63, h:.70},{n:'Expedia', x:.72, h:.46},
+  {n:'T-Mobile', x:.81, h:.58},{n:'Costco', x:.90, h:.40}
+];
+T.forEach((t, i) => { t.lit = 0; t.sent = 0; t.w = .045 + (i % 3)*.01; });
+let pk = [], acc = 0, tm = 0;
+function size(){ const d = Math.min(2, devicePixelRatio || 1), r = cv.getBoundingClientRect(); cv.width = r.width*d|0; cv.height = r.height*d|0; cx.setTransform(d,0,0,d,0,0); W = r.width; H = r.height; }
+function needle(x, base, h){
+  cx.strokeStyle = C.muted; cx.lineWidth = 1.4; cx.beginPath();
+  cx.moveTo(x - 7, base); cx.lineTo(x - 2, base - h*.62); cx.lineTo(x + 2, base - h*.62); cx.lineTo(x + 7, base); cx.stroke();
+  cx.beginPath(); cx.ellipse(x, base - h*.66, 22, 6, 0, 0, 7); cx.stroke();
+  cx.beginPath(); cx.moveTo(x, base - h*.72); cx.lineTo(x, base - h); cx.stroke();
+}
+function draw(dt){
+  const small = W < 600, base = H - 34, top = 26, lx = small ? 30 : 48, ly = H*.30;
+  cx.clearRect(0, 0, W, H);
+  // ground
+  cx.strokeStyle = C.line; cx.lineWidth = 1; cx.beginPath(); cx.moveTo(0, base + .5); cx.lineTo(W, base + .5); cx.stroke();
+  // buildings
+  T.forEach(t => {
+    const bx = W*t.x, bw = W*t.w, bh = (base - top)*t.h;
+    cx.strokeStyle = t.lit > 0 ? C.accent : C.muted; cx.lineWidth = t.lit > 0 ? 1.8 : 1.2;
+    cx.strokeRect(bx - bw/2 + .5, base - bh + .5, bw, bh);
+    // windows
+    cx.fillStyle = t.lit > 0 ? C.accent : C.line;
+    for (let y = base - bh + 8; y < base - 6; y += 10) for (let x = bx - bw/2 + 5; x < bx + bw/2 - 4; x += 8) cx.fillRect(x, y, 3, 4);
+    if (t.lit > 0){ cx.globalAlpha = Math.min(1, t.lit)*.5; cx.strokeStyle = C.accent; cx.beginPath(); cx.arc(bx, base - bh, 8 + (1 - Math.min(1, t.lit))*10, 0, 7); cx.stroke(); cx.globalAlpha = 1; }
+    if (!small || t.lit > 0){ cx.fillStyle = t.lit > 0 ? C.fg : C.muted; cx.font = `${small ? 9 : 11}px "Geist", sans-serif`; cx.textAlign = 'center'; cx.fillText(t.n, bx, base + (T.indexOf(t) % 2 ? 30 : 16)); }
+  });
+  needle(W*.17, base, (base - top)*.95);
+  // laptop
+  cx.strokeStyle = C.fg; cx.lineWidth = 1.5; cx.strokeRect(lx - 18, ly - 12, 36, 24); cx.beginPath(); cx.moveTo(lx - 24, ly + 14); cx.lineTo(lx + 24, ly + 14); cx.stroke();
+  cx.fillStyle = C.fg; cx.font = `500 ${small ? 10 : 11}px "Geist", sans-serif`; cx.textAlign = 'center'; cx.fillText('Underdog', lx, ly + 30); cx.fillStyle = C.muted; cx.font = `${small ? 9 : 10}px "Geist", sans-serif`; cx.fillText('on my laptop', lx, ly + 43);
+  // packets
+  if (dt){
+    tm += dt; acc += dt*1.4;
+    while (acc > 1){ acc--; const i = Math.floor(Math.random()*T.length); pk.push({t:0, i, hit: Math.random() < .38, sp:.45 + Math.random()*.2}); }
+    pk.forEach(p => { p.t += dt*p.sp; if (p.t >= 1){ p.done = true; T[p.i].sent++; if (p.hit) T[p.i].lit = 1.6; } });
+    pk = pk.filter(p => !p.done);
+    T.forEach(t => { if (t.lit > 0) t.lit = Math.max(0, t.lit - dt*.25); });
+  }
+  pk.forEach(p => {
+    const t = T[p.i], bx = W*t.x, by = base - (base - top)*t.h, mx = (lx + bx)/2, my = Math.min(ly, by) - 40;
+    const u = 1 - p.t, x = u*u*lx + 2*u*p.t*mx + p.t*p.t*bx, y = u*u*ly + 2*u*p.t*my + p.t*p.t*by;
+    cx.fillStyle = p.hit ? C.accent : C.muted; cx.globalAlpha = p.hit ? 1 : .55; cx.beginPath(); cx.arc(x, y, p.hit ? 3.6 : 2.6, 0, 7); cx.fill(); cx.globalAlpha = 1;
+  });
+}
+colors(); size();
+pk = [{t:.3,i:4,hit:true,sp:.5},{t:.6,i:1,hit:false,sp:.5},{t:.8,i:6,hit:true,sp:.5},{t:.15,i:2,hit:false,sp:.5}]; T[0].lit = 1; T[5].lit = .6;
+draw(0);
+addEventListener('resize', () => { size(); draw(0); });
+document.getElementById('themeToggle').addEventListener('click', () => { colors(); draw(0); });
+let last = performance.now();
+function loop(now){ const dt = Math.min(.05, (now - last)/1000); last = now; draw(dt); requestAnimationFrame(loop); }
+if (!RM) requestAnimationFrame(loop);
+})();
+document.getElementById('copy').addEventListener('click',function(){
+  var btn=this,el=document.getElementById('email');
+  function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  try{navigator.clipboard.writeText(el.textContent).then(function(){btn.firstChild.textContent='Copied ';},sel);}catch(e){sel();}
+});
+</script>
+</body>
+</html>
